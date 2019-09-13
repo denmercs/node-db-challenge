@@ -1,16 +1,14 @@
 const db = require("../data/db-config");
 
-/**
- adding resources.
- retrieving a list of resources.
- adding projects.
- retrieving a list of projects.
- adding tasks.
- retrieving a list of tasks.
- */
-
 function get() {
-  return db("projects");
+  return db("projects").then(projects => {
+    const checkCompleted = projects.map(project => {
+      project.completed = Boolean(project.completed);
+      return projects;
+    });
+
+    return checkCompleted;
+  });
 }
 
 function getById(id) {
@@ -29,13 +27,8 @@ function addProject(project) {
     });
 }
 
-function getResources() {
-  return db("resources");
-}
-
 module.exports = {
   get,
   getById,
-  addProject,
-  getResources
+  addProject
 };

@@ -4,7 +4,9 @@ const Projects = require("./projects-model");
 // projects
 router.get("/", (req, res) => {
   Projects.get()
-    .then(projects => res.status(200).json(projects))
+    .then(projects => {
+      res.status(200).json(projects);
+    })
     .catch(err =>
       res.status(500).json({ message: "error connecting on server" })
     );
