@@ -11,17 +11,17 @@ exports.seed = function(knex) {
         {
           name: "react development",
           completed: true,
-          description: "lorem ipsum"
+          description: "lorem ipsum 1"
         },
         {
           name: "react with redux",
           completed: false,
-          description: "lorem ipsum"
+          description: "lorem ipsum 2"
         },
         {
           name: "Javascript",
           completed: true,
-          description: "lorem ipsum"
+          description: "lorem ipsum 3"
         }
       ]);
     })
