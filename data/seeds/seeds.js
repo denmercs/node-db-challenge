@@ -35,12 +35,12 @@ exports.seed = function(knex) {
         {
           description: "test 2",
           notes: "Lorem ipsum description",
-          project_id: 2
+          project_id: 1
         },
         {
           description: "test 3",
           notes: "Lorem ipsum description",
-          project_id: 1
+          project_id: 2
         }
       ]);
     })
@@ -58,6 +58,14 @@ exports.seed = function(knex) {
           name: "Resource 3",
           description: "Lorem ipsum description"
         }
+      ]);
+    })
+    .then(function() {
+      return knex("project_resources").insert([
+        { project_id: 1, resource_id: 1 },
+        { project_id: 1, resource_id: 2 },
+        { project_id: 2, resource_id: 1 },
+        { project_id: 2, resource_id: 2 }
       ]);
     });
 };
