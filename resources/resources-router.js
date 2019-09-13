@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const Projects = require("./projects-model");
+const Resources = require("./resources-model");
 
-// projects
+// resources
 router.get("/", (req, res) => {
-  Projects.get()
-    .then(projects => res.status(200).json(projects))
+  Resources.getResources()
+    .then(resources => res.status(200).json(resources))
     .catch(err =>
       res.status(500).json({ message: "error connecting on server" })
     );
@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   const { id } = req.params;
-  Projects.getById(id)
+  Resources.getByResourceId(id)
     .then(project => {
       if (project) {
         res.json(project);
@@ -30,7 +30,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   const project = req.body;
 
-  Projects.addProject(project)
+  Resources.addResouce(project)
     .then(project => {
       res.status(200).json(project);
     })
